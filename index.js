@@ -32,23 +32,21 @@ recu("./directoryToSerach", function (err, files) {
  * OPTION C (own)
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('fs')
+const path = require('path')
 
 function traverseDir(dir, resultArray) {
-  fs.readdirSync(dir).forEach(file => {
-    let fullPath = path.join(dir, file);
+  fs.readdirSync(dir).forEach((file) => {
+    let fullPath = path.join(dir, file)
     if (fs.lstatSync(fullPath).isDirectory()) {
-          //console.log(fullPath);
-          traverseDir(fullPath, resultArray);
-     } else {
+      //console.log(fullPath);
+      traverseDir(fullPath, resultArray)
+    } else {
       resultArray.push(fullPath)
-          //console.log(fullPath);
-     }  
-  });
+      //console.log(fullPath);
+    }
+  })
 }
-let files = [];
-traverseDir('./directoryToSerach', files);
+let files = []
+traverseDir('./directoryToSerach', files)
 console.log(files)
-
-
